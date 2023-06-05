@@ -14,7 +14,12 @@ namespace Store.DataAccess.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,6 +29,13 @@ namespace Store.DataAccess.Data
                 new Category { Id = 11, Name = "Fantasy", DisplayOrder = 2 },
                 new Category { Id = 12, Name = "Comedy", DisplayOrder = 3 }
                 );
+
+            modelBuilder.Entity<Company>().HasData(
+                new Company { Id = 1, Name = "Adidas", StreetAddress = "123 Adidas St", City = "New York", PostalCode="12121", State="IL", PhoneNumber = "01737281939" },
+                new Company { Id = 2, Name = "Nike", StreetAddress = "123 Nike St", City = "New York City", PostalCode = "12121", State = "INL", PhoneNumber = "01977281939" },
+                new Company { Id = 3, Name = "Puma", StreetAddress = "123 Puma St", City = "Delhi", PostalCode = "1216", State = "IND", PhoneNumber = "01583945939" }
+                );
+
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {
